@@ -3,9 +3,7 @@ package petProject.creatures;
 import petProject.coordinates.Coordinates;
 import petProject.coordinates.CoordinatesShift;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 abstract public class Creature extends Entity{
     public Creature(Coordinates coordinates) {
@@ -14,7 +12,8 @@ abstract public class Creature extends Entity{
     int hp = 10;
     int speed = 1;
 
-    public abstract void makeMove();
+    public abstract Set<CoordinatesShift> makeMove();
+
 
     public Set<Coordinates> getAvailableMove(Map map) {
         Set<Coordinates> result = new HashSet<>();
@@ -41,4 +40,8 @@ return  result;
     protected Set<CoordinatesShift> getPieceAttacks() {
         return getPieceMoves();
     }
+
+    protected abstract boolean checkIfTarget(Entity entity);
+
+
  }

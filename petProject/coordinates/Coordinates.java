@@ -1,5 +1,8 @@
 package petProject.coordinates;
 
+import petProject.creatures.Creature;
+import petProject.creatures.Entity;
+
 import java.util.Objects;
 
 public class Coordinates {
@@ -9,6 +12,11 @@ public class Coordinates {
     public Coordinates(File file, Integer rank) {
         this.file = file;
         this.rank = rank;
+        for (int i = 0; i < file.ordinal(); i++) {
+            for (int j = 0; j < rank; j++) {
+                Coordinates c = new Coordinates(i,j);
+            }
+        }
     }
 
 
@@ -23,8 +31,8 @@ public class Coordinates {
         int f = file.ordinal() + shift.fileShift;
         int r = rank + shift.rankShift;
 
-        if ((f < 0) || (f > 9)) return false; // 0..7 - good
-        if ((r < 1) || (r > 10)) return false; // 1..8 - good
+        if ((f < 0) || (f > 9)) return false;
+        if ((r < 1) || (r > 10)) return false;
 
         return true;
     }

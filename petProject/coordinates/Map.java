@@ -11,6 +11,8 @@ public class Map {
     HashMap<Coordinates, Entity> cells = new HashMap<>();
     public List<Move> moves = new ArrayList<>();
 
+
+
 //    public getWidth();
 //    public getHeight();
 //
@@ -32,6 +34,7 @@ public class Map {
         cells.remove(coordinates);
     }
 
+    // moving creatures
     public void makeMove(Move move) {
         Creature creature = (Creature) getCreature(move.from);
 
@@ -90,5 +93,7 @@ public class Map {
 
 
     }
+
+
 
 }

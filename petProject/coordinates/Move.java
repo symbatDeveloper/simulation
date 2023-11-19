@@ -1,5 +1,8 @@
 package petProject.coordinates;
 
+import petProject.creatures.Creature;
+import petProject.creatures.Entity;
+
 public class Move {
     public final Coordinates from, to;
 
@@ -7,4 +10,6 @@ public class Move {
         this.from = from;
         this.to = to;
     }
+
+
 }

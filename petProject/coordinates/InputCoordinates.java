@@ -1,6 +1,10 @@
 package petProject.coordinates;
 
+import petProject.creatures.*;
+
 import java.util.Scanner;
+import java.util.Set;
+
 
 public class InputCoordinates {
      private  static  final Scanner scanner = new Scanner(System.in);
@@ -42,9 +46,30 @@ public class InputCoordinates {
      }
 
 
-         public static void main(String[] args) {
+     public static Coordinates inputCoordinates(Map map) {
+         while (true) {
+             System.out.println("enter coordinates to move");
              Coordinates coordinates = input();
-             System.out.println("coordinates: "+ coordinates);
+             if (map.isCellEmpty(coordinates)) {
+                 System.out.println("Empty cell");
+                 continue;
+             }
+             return coordinates;
          }
+     }
+
+//        Set<Coordinates> isSqareAvailable = creature.getAvailableMove(map);
+//        if(isSqareAvailable.size()==0){
+//            System.out.println("no empty cells");
+//            continue;
+//        }
+
+
+
+
+//         public static void main(String[] args) {
+//             Coordinates coordinates = input();
+//             System.out.println("coordinates: "+ coordinates);
+//         }
 
 }
