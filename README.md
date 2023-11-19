@@ -6,8 +6,6 @@ The point of the project is a step-by-step simulation of a 2D world populated by
 
 <img width="206" alt="Screenshot 2023-11-17 at 21 13 02" src="https://github.com/symbatDeveloper/simulation/assets/136576925/dfd22b52-8cef-488b-bc5d-a7101f304405">
 
-<img width="206" alt="Screenshot 2023-11-17 at 21 13 02" src="https://github.com/symbatDeveloper/simulation/assets/136576925/074c1720-9e78-40d6-ac56-f71b5af7edbe">
-
 Implemented features:
 Creature actions:
 Herbivores can either go towards the Grass or eat it
