@@ -1,23 +1,16 @@
 package petProject;
 import petProject.coordinates.*;
 
-import static petProject.coordinates.InputCoordinates.input;
-import static petProject.coordinates.InputCoordinates.inputCoordinates;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) {
-    Map map = new Map();
-    int a=123;
-    map.setCellsCoordinates();
+    public static void main(String[] args) throws InterruptedException {
+        final Simulation simulation = new Simulation(
+                new Map(12, 12),
+                new ConcoleRenderer());
+        simulation.play();
 
-    ConcoleRenderer renderer = new ConcoleRenderer();
-    renderer.render(map);
-
-        Coordinates coordinates = input();
-        System.out.println("coordinates: "+ coordinates);
-
-        Coordinates coordinates1= inputCoordinates(map);
-        System.out.println(coordinates1);
     }
 }

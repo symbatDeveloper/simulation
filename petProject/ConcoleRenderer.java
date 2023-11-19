@@ -1,59 +1,65 @@
 package petProject;
 
-import petProject.coordinates.File;
-
 import petProject.coordinates.*;
-import petProject.creatures.Creature;
-import petProject.creatures.Entity;
 
-import javax.swing.*;
 
 public class ConcoleRenderer {
 
-    public void render(Map map) {
-        for (int rank = 10; rank >= 1; rank--) {
-            String line = "";
-            for (File file : File.values()) {
-                Coordinates coordinates = new Coordinates(file, rank);
-                if (map.isCellEmpty(coordinates)) {
-                    line += getSpriteForEmpltyCell(coordinates);
-                } else {
-                    line += getSpriteForCreature(map.getCreature(coordinates));
-                }
-            }
+    public void reder(final Map worldMap) {
+    cleanConsoleOutput();
 
-            System.out.println(line);
+        System.out.println("Simulation: ");
+
+        int borderDrawingLength = worldMap.getWorld().size() / worldMap.width;
+        int borderDrawingLengthOld = borderDrawingLength;
+        drawBorders(borderDrawingLength);
+        for (int i = 0; i < worldMap.getWorld().size(); i++) {
+            System.out.print("  " + worldMap.getWorld().get(i).getType() + " ");
+            if (i == borderDrawingLengthOld - 1) {
+                System.out.println(" ");
+                borderDrawingLengthOld += borderDrawingLength;
+            }
+        }
+        drawBorders(borderDrawingLength);
+    }
+
+    private void drawBorders(final int borderDrawingLength) {
+        System.out.print(" ");
+        for (int i = 0; i < borderDrawingLength; i++) {
+            System.out.print("....");
+        }
+        System.out.println();
+    }
+
+    public static void cleanConsoleOutput() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception E) {
+            System.out.println(E);
         }
     }
-        public String colorize (String sprite){
-            String result = sprite;
-            return sprite;
-        }
-
-
-        private String getSpriteForEmpltyCell (Coordinates coordinates){
-            return colorize("  ");
-        }
-
-
-        private String selectUnicode (Entity entity){
-            switch (entity.getClass().getSimpleName()) {
-                case "Herbivore":
-                    return "🐥";
-                case "Predator":
-                    return "🐈";
-                case "Grass":
-                    return "🌿";
-                case "Tree":
-                    return "🌳";
-                case "Rock":
-                    return "🪨";
-            }
-            return " ";
-        }
-
-private String getSpriteForCreature(Entity entity){
-        return colorize( selectUnicode(entity));
 }
 
-}
+
+
+
+
+
+//        private String selectUnicode (Entity entity){
+//            switch (entity.getClass().getSimpleName()) {
+//                case "Herbivore":
+//                    return "🐥";
+//                case "Predator":
+//                    return "🐈";
+//                case "Grass":
+//                    return "🌿";
+//                case "Tree":
+//                    return "🌳";
+//                case "Rock":
+//                    return "🪨";
+//            }
+//            return " ";
+//        }
+
+
+
